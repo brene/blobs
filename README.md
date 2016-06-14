@@ -1,4 +1,4 @@
-# blobs\
+# blobs
 
 [![Build Status](https://travis-ci.org/swing-deepdive/blobs.svg?branch=master)](https://travis-ci.org/swing-deepdive/blobs)
 
