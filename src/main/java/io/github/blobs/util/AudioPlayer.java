@@ -22,8 +22,10 @@ public class AudioPlayer implements Runnable {
 
     @Override
     public void run() {
+        ClassLoader classLoader = this.getClass().getClassLoader();
+        File mp3File = new File(classLoader.getResource(sound).getFile());
         try {
-            MediaPlayer mediaPlayer = new MediaPlayer(new Media(new File(sound).toURI().toURL().toString()));
+            MediaPlayer mediaPlayer = new MediaPlayer(new Media(mp3File.toURI().toURL().toString()));
             mediaPlayer.play();
             mediaPlayer.setCycleCount(cycleCount);
         } catch (MalformedURLException e) {

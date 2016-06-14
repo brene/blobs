@@ -14,6 +14,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 
 public class JStartPanel extends JComponent implements MouseListener {
@@ -38,8 +39,12 @@ public class JStartPanel extends JComponent implements MouseListener {
 
     private void initFxLater(JFXPanel panel) {
         MediaPlayer mediaPlayer = null;
+
+        ClassLoader classLoader = this.getClass().getClassLoader();
+        File mp4File = new File(classLoader.getResource("vid" + File.separator +
+                "prequel.mp4").getFile());
         try {
-            mediaPlayer = new MediaPlayer(new Media(new File(MEDIA_URL).toURI().toURL().toString()));
+            mediaPlayer = new MediaPlayer(new Media(mp4File.toURI().toURL().toString()));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

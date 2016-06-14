@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -57,7 +58,9 @@ public class JHighScorePanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         try {
-            g.drawImage(ImageIO.read(new File("img" + File.separator + "highscore.png")), 0, 0, null);
+            ClassLoader classLoader = this.getClass().getClassLoader();
+            File imgFile = new File(classLoader.getResource("img" + File.separator + "highscore.png").getFile());
+            g.drawImage(ImageIO.read(imgFile), 0, 0, null);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

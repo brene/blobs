@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Created by root on 08.06.16.
@@ -35,7 +36,9 @@ public class JGameOverPanel extends JComponent implements KeyListener {
 
         super.paintComponent(g);
         try {
-            g.drawImage(ImageIO.read(new File("img" + File.separator + "gameover.png")), 0, 0, null);
+            ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+            InputStream inputStream = classloader.getResourceAsStream("img" + File.separator + "gameover.png");
+            g.drawImage(ImageIO.read(inputStream), 0, 0, null);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
